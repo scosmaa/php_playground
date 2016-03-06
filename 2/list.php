@@ -1,15 +1,3 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: simon
- * Date: 05/03/2016
- * Time: 19:23
- */
-
-$link = new PDO('mysql:host=localhost;dbname=playground','root','');
-$result = $link->query('select * from post');
-
-?>
 <html>
     <head>
         <title>Prova connessione DB - Lista dei Post</title>
@@ -17,13 +5,16 @@ $result = $link->query('select * from post');
     <body>
         <h1>Elenco dei post</h1>
         <ul>
-            <?php while($row = $result->fetch(PDO::FETCH_ASSOC)): ?>
+            <?php foreach($result as $row ): ?>
                 <li>
                     <a href="/show.php?id=<?php echo $row['id'] ?>">
                         <?php echo $row['title'] ?>
                     </a>
                 </li>
-            <?php endwhile ?>
+            <?php endforeach ?>
         </ul>
+
+
     </body>
+
 </html>
